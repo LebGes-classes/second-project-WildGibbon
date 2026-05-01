@@ -1,0 +1,70 @@
+{
+    "items": [
+        {
+            "name": "нормальный телефон че вы пристали",
+            "quantity": 50,
+            "state": 3,
+            "supplier": "ООО 'Технологии'",
+            "manufacturer": "GlobalTech",
+            "price": 45000.0,
+            "location": "Склад 2, стеллаж 1",
+            "city": "Последняя модель",
+            "product_id": "SM-67890"
+        },
+        {
+            "name": "ПЛОХАЯ(УЖАСНАЯ) КАМЕРА",
+            "quantity": 5,
+            "state": 3,
+            "supplier": "ООО 'Электроника'",
+            "manufacturer": "VisionPro",
+            "price": 75000.0,
+            "location": "Склад 1, секция А",
+            "city": "55-дюймовый 4K",
+            "product_id": "TV-11223"
+        },
+        {
+            "name": "Беспроводные наушники",
+            "quantity": 100,
+            "state": 3,
+            "supplier": "ИП 'АудиоМир'",
+            "manufacturer": "SoundWave",
+            "price": 8000.0,
+            "location": "Склад 3, ячейка 7",
+            "city": "Наушники с шумоподавлением",
+            "product_id": "HP-44556"
+        },
+        {
+            "name": "ПРИДУРОК",
+            "quantity": 0,
+            "state": 3,
+            "supplier": "default",
+            "manufacturer": "default",
+            "price": 1,
+            "location": "default",
+            "city": "default",
+            "product_id": "default"
+        },
+        {
+            "name": "IPHONEX",
+            "quantity": 0,
+            "state": 1,
+            "supplier": "default",
+            "manufacturer": "default",
+            "price": 1,
+            "location": "default",
+            "city": "default",
+            "product_id": "default"
+        },
+        {
+            "name": "чупачупс",
+            "quantity": 0,
+            "state": 3,
+            "supplier": "default",
+            "manufacturer": "default",
+            "price": 1,
+            "location": "default",
+            "city": "default",
+            "product_id": "default"
+        }
+    ]
+}
