@@ -1,27 +1,21 @@
 import supabase
+import os
 
-from code.item.Actions.MockAction import MockAction
-from code.item.Actions.OpenMenuAction import OpenMenuAction
-from code.item.Menu.ImmutableMenu import ImmutableMenu
-from code.item.Menu.Menu import Menu
-from code.item.Menu.MenuView import MenuView
-from code.item.MenuItem import MenuItem
+from code.item.actions.AddProductAction import AddProductAction
+from code.item.menu.Menu import Menu
+from code.item.menu.MenuView import MenuView
+from dotenv import load_dotenv
 
-def action():
-    pass
 
-url = "https://siltyccneevvpfpcwnfv.supabase.co"
-key = ""
+load_dotenv()
+url = os.environ.get('SUPABASE_URL')
+key = os.environ.get('SUPABASE_KEY')
+
 
 client = supabase.create_client(url, key)
 
-product_menu = ImmutableMenu([MenuItem("POL", MockAction()), MenuItem("POL2", MockAction())], MenuView(), client)
-
-items = [
-    MenuItem("gay", OpenMenuAction(product_menu))
-]
-
-menu = Menu(items, MockAction(), MenuView(), client)
+items = []
+menu = Menu(items, AddProductAction(client), MenuView(), client)
 
 menu.open()
 

@@ -1,7 +1,7 @@
 import supabase
 
-from code.item.Actions.DelegateAction import DelegateAction
-from code.item.Menu.IMenu import IMenu
+from code.item.actions.DelegateAction import DelegateAction
+from code.item.menu.IMenu import IMenu
 from code.item.MenuItem import MenuItem
 import os
 
@@ -32,7 +32,7 @@ class Menu(IMenu):
 
     def __add_item(self):
          item = self.__add_item_action.execute()
-         self.__items.append(item)
+         self.__items.insert(-3, item)
 
     def __delete_item(self):
         item_num = input("Enter item number: ")

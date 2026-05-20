@@ -1,4 +1,4 @@
-from code.item.Actions.IAction import IAction
+from code.item.actions.IAction import IAction
 
 
 class MenuItem:

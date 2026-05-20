@@ -1,6 +1,6 @@
 from code.item_catalog.ItemCatalogMenuView import ItemCatalogMenuView
 from code.item_catalog.ItemCatalog import ItemCatalog
-from code.item.Menu.IItemMenu import IItemMenu
+from code.item.menu.IItemMenu import IItemMenu
 from code.item.ItemState import ItemState
 from code.item.Product import Product
 
