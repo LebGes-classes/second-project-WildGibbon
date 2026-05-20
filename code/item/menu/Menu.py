@@ -1,4 +1,5 @@
 import supabase
+from postgrest import SyncRequestBuilder
 
 from code.item.actions.DelegateAction import DelegateAction
 from code.item.menu.IMenu import IMenu
@@ -7,10 +8,10 @@ import os
 
 
 class Menu(IMenu):
-    def __init__(self, items: list, add_item_action, view, db_client: supabase.Client):
+    def __init__(self, items: list, add_item_action, view, db_table: SyncRequestBuilder):
         self.__add_item_action = add_item_action
         self.__items = items.copy()
-        self.__client = db_client
+        self.__table = db_table
         self.__view = view
 
         self.__items.append(MenuItem("Добавить элемент", DelegateAction(self.__add_item)))
@@ -37,6 +38,7 @@ class Menu(IMenu):
     def __delete_item(self):
         item_num = input("Enter item number: ")
         self.__items.pop(int(item_num) - 1)
+        self.__table.delete().eq("number", int(item_num) - 1).execute()
 
     def __close(self):
         self.__is_opened = False

@@ -13,9 +13,10 @@ key = os.environ.get('SUPABASE_KEY')
 
 
 client = supabase.create_client(url, key)
-
+product_table = client.table("Product")
 items = []
-menu = Menu(items, AddProductAction(client), MenuView(), client)
+
+menu = Menu(items, AddProductAction(product_table), MenuView(), product_table)
 
 menu.open()
 
