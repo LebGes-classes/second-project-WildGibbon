@@ -1,4 +1,4 @@
-from code.menu_system.MenuItem import MenuItem
+from code.menu_system.menu.MenuItem import MenuItem
 from typing import List
 
 

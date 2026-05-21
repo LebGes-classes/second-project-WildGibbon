@@ -3,8 +3,7 @@ import os
 
 
 class Menu(IMenu):
-    def __init__(self, items: list, add_item_action, view):
-        self.__add_item_action = add_item_action
+    def __init__(self, items: list, view):
         self.__items = items.copy()
         self.__view = view
 
@@ -21,12 +20,14 @@ class Menu(IMenu):
 
             self.__items[int(item_num) - 1].execute()
 
+    def append_item(self, item):
+        self.__items.append(item)
 
-    def add_item(self, item):
-         self.__items.append(item)
+    def insert_item(self, index, item):
+         self.__items.insert(index, item)
 
-    def remove_item(self, item_number):
-        self.__items.pop(item_number)
+    def remove_item(self, index):
+        self.__items.pop(index)
 
     def close(self):
         self.__is_opened = False

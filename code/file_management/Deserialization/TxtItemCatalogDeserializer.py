@@ -1,7 +1,7 @@
 from code.file_management.Deserialization.IItemCatalogDeserializer import IItemCatalogDeserializer
 from code.menu_system.ItemState import ItemState
 from code.item_catalog.ItemCatalog import ItemCatalog
-from code.menu_system.Product import Product
+from code.entities.product.Product import Product
 
 
 class TxtItemCatalogDeserializer(IItemCatalogDeserializer):

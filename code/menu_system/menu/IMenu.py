@@ -5,8 +5,14 @@ class IMenu(ABC):
     def open(self):
         pass
 
-    def add_item(self, menu_item):
+    def append_item(self, item):
         pass
 
-    def remove_item(self, menu_item):
+    def insert_item(self, menu_item, index):
+        pass
+
+    def remove_item(self, index):
+        pass
+
+    def close(self):
         pass

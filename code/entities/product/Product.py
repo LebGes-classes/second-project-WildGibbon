@@ -17,6 +17,10 @@ class Product:
     def description(self):
         return self._description
 
+    @property
+    def warehouse(self):
+        return self._warehouse
+
 
     @id.setter
     def id(self, value):
