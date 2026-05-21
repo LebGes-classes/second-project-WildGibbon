@@ -1,12 +1,13 @@
-import supabase
-import os
-
+from code.menu_system.menu.decorators.ClosableMenu import ClosableMenu
+from code.menu_system.menu.decorators.DeletableMenu import DeletableMenu
+from code.menu_system.menu.decorators.ProductMenu import ProductMenuDecorator
+from code.menu_system.menu.MenuView import MenuView
 from code.entities.product.Product import Product
 from code.menu_system.menu.Menu import Menu
-from code.menu_system.menu.MenuView import MenuView
 from dotenv import load_dotenv
 
-from code.menu_system.menu.Decorators.ProductMenuDecorator import ProductMenuDecorator
+import supabase
+import os
 
 load_dotenv()
 url = os.environ.get('SUPABASE_URL')
@@ -17,7 +18,11 @@ client = supabase.create_client(url, key)
 product_table = client.table("Product")
 products = [Product("1341", 4134234, 41354 , 53544)]
 
-menu = ProductMenuDecorator(Menu([], MenuView()), products)
+menu = ProductMenuDecorator(
+    DeletableMenu(
+        ClosableMenu(
+            Menu([], MenuView()))
+    ), products)
 
 menu.open()
 

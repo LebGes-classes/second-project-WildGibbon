@@ -8,7 +8,7 @@ class IMenu(ABC):
     def append_item(self, item):
         pass
 
-    def insert_item(self, menu_item, index):
+    def insert_item(self, index, menu_item):
         pass
 
     def remove_item(self, index):
