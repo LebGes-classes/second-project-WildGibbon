@@ -1,7 +1,7 @@
 from postgrest import SyncRequestBuilder
 
-from code.item.factories.ImmutableItemFactory import create_immutable_item
-from code.item.actions.IAction import IAction
+from code.menu_system.factories.ImmutableItemFactory import create_immutable_item
+from code.menu_system.actions.IAction import IAction
 
 
 class AddProductAction(IAction):

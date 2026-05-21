@@ -1,9 +1,9 @@
 import supabase
 import os
 
-from code.item.actions.AddProductAction import AddProductAction
-from code.item.menu.Menu import Menu
-from code.item.menu.MenuView import MenuView
+from code.menu_system.actions.AddProductAction import AddProductAction
+from code.menu_system.menu.Menu import Menu
+from code.menu_system.menu.MenuView import MenuView
 from dotenv import load_dotenv
 
 

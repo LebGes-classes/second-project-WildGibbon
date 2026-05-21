@@ -2,9 +2,9 @@ import os
 
 import supabase
 
-from code.item.actions.DelegateAction import DelegateAction
-from code.item.menu.IMenu import IMenu
-from code.item.MenuItem import MenuItem
+from code.menu_system.actions.DelegateAction import DelegateAction
+from code.menu_system.menu.IMenu import IMenu
+from code.menu_system.MenuItem import MenuItem
 
 class ImmutableMenu(IMenu):
     def __init__(self, items: list, view):
@@ -21,7 +21,7 @@ class ImmutableMenu(IMenu):
         while self.__is_opened:
             os.system("cls")
             print(self.__view.visualize(self.__items))
-            item_num = input("Enter item number: ")
+            item_num = input("Enter menu_system number: ")
 
             self.__items[int(item_num) - 1].execute()
 
