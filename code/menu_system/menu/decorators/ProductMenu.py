@@ -5,7 +5,7 @@ from code.entities.product.Product import Product
 from code.menu_system.menu.Menu import IMenu
 
 
-class ProductMenuDecorator(IMenu):
+class ProductMenu(IMenu):
     def __init__(self, menu: IMenu, products):
         self.__products = products
         self.__menu = menu
