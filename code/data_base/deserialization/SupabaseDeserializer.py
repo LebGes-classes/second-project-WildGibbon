@@ -1,14 +1,11 @@
-from code.entities.product.Product import Product
+import postgrest
 
 
 class SupabaseDeserializer:
-    def __init__(self, client):
-        self.client = client
-
-    def get_products(self):
-        response = self.client.table("Product").select("*").execute()
+    def get_entities(self, class_name, table: postgrest.SyncRequestBuilder):
+        response = table.select("*").execute()
         data = response.data
 
-        products = [Product(**item) for item in data]
+        products = [class_name(**item) for item in data]
 
         return products

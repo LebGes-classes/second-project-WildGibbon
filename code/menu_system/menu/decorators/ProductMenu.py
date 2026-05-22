@@ -6,7 +6,8 @@ from code.menu_system.menu.Menu import IMenu
 
 
 class ProductMenu(IMenu):
-    def __init__(self, menu: IMenu, products):
+    def __init__(self, menu: IMenu, products, warehouses):
+        self.__warehouses = warehouses
         self.__products = products
         self.__menu = menu
 
@@ -31,6 +32,7 @@ class ProductMenu(IMenu):
         return self.__menu.length()
 
     def __build_menu(self):
+        self.__menu.insert_item(0, MenuItem("Переместить товар", DelegateAction(self.__replace_product)))
         self.__menu.insert_item(0, MenuItem("Добавить товар", DelegateAction(self.__add_product)))
         self.__menu.insert_item(0, MenuItem("Удалить товар", DelegateAction(self.__remove_item)))
 
@@ -53,8 +55,32 @@ class ProductMenu(IMenu):
         self.__products.append(Product(id, name, description, warehouse_id))
         self.__menu.append_item(product_item)
 
+    def __replace_product(self):
+        print()
+
+        for i, product in enumerate(self.__products):
+            print(f"{i + 1}. {product.name}")
+
+        product_number = int(input("Enter product number: "))
+
+        print()
+
+        for i, warehouse in enumerate(self.__warehouses):
+            print(f"{i + 1}) id: {warehouse.id}, name: {warehouse.name}, location: {warehouse.location}")
+
+        new_id = int(input("Choose ID: "))
+
+        product = self.__products[product_number - 1]
+        product.warehouse = new_id
+
+        self.__menu.remove_item(product_number + 3)
+        product_item = create_leaf_item(product.name, product.id, product.warehouse, product.description)
+
+        self.__menu.append_item(product_item)
+
+
     def __remove_item(self):
         num = int(input("Enter number: "))
         self.__menu.remove_item(num - 1)
 
-        self.__products.pop(num - 4)
+        self.__products.pop(num - 5)

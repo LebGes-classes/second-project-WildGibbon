@@ -50,7 +50,7 @@ class WarehouseMenu(IMenu):
         name = input("Enter name: ")
         location = input("Enter location: ")
 
-        menu_item = create_leaf_item(id, name, location)
+        menu_item = create_leaf_item(name, id, location)
 
         self.__warehouses.append(Warehouse(id, name, location))
         self.__menu.append_item(menu_item)

@@ -1,20 +1,12 @@
-from code.entities.product.Product import Product
-
-import supabase
-
+import postgrest
 
 class SupabaseSerializer:
-    def __init__(self, client: supabase.Client):
-        self.__client = client
+    def serialize_entities(self, entities: list, table: postgrest.SyncRequestBuilder):
+        table.delete().neq("ctid", "(0,0)").execute()
 
-    def serialize_products(self, products: list[Product]):
+        for entity in entities:
+            dict_entity = {i[0].split("_")[-1]: i[1] for i in entity.__dict__.items()}
 
-        for product in products:
-            dict_products = {'id': product.id,
-                             'name': product.name,
-                             'warehouse': product.warehouse,
-                             'description': product.description}
-
-            self.__client.table("Product").insert(dict_products).execute()
+            table.insert(dict_entity).execute()
 
 
