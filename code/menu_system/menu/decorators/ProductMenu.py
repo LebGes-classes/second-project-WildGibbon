@@ -27,9 +27,12 @@ class ProductMenu(IMenu):
     def remove_item(self, index):
         self.__menu.remove_item(index)
 
+    def length(self):
+        return self.__menu.length()
 
     def __build_menu(self):
         self.__menu.insert_item(0, MenuItem("Добавить товар", DelegateAction(self.__add_product)))
+        self.__menu.insert_item(0, MenuItem("Удалить товар", DelegateAction(self.__remove_item)))
 
         for product in self.__products:
             product_item = create_leaf_item(product.name,
@@ -50,3 +53,8 @@ class ProductMenu(IMenu):
         self.__products.append(Product(id, name, description, warehouse_id))
         self.__menu.append_item(product_item)
 
+    def __remove_item(self):
+        num = int(input("Enter number: "))
+        self.__menu.remove_item(num - 1)
+
+        self.__products.pop(num - 4)

@@ -1,4 +1,4 @@
-from code.file_management.Deserialization.IItemCatalogDeserializer import IItemCatalogDeserializer
+from code.data_base.seserialization.IItemCatalogDeserializer import IItemCatalogDeserializer
 from code.item_catalog.ItemCatalog import ItemCatalog
 from code.menu_system.ItemState import ItemState
 from code.entities.product.Product import Product

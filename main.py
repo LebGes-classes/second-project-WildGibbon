@@ -1,4 +1,5 @@
-from code.file_management.Deserialization.SupabaseDeserializer import SupabaseDeserializer
+from code.data_base.deserialization.SupabaseDeserializer import SupabaseDeserializer
+from code.data_base.serialization.SupabaseSerializer import SupabaseSerializer
 from code.menu_system.menu.decorators.ProductMenu import ProductMenu
 from code.menu_system.menu.decorators.DeletableMenu import DeletableMenu
 from code.menu_system.menu.decorators.ClosableMenu import ClosableMenu
@@ -15,16 +16,24 @@ key = os.environ.get('SUPABASE_KEY')
 client = supabase.create_client(url, key)
 
 deserializer = SupabaseDeserializer(client)
+serializer = SupabaseSerializer(client)
 
 product_table = client.table("Product")
 products = deserializer.get_products()
 
 menu = ProductMenu(
-    DeletableMenu(
         ClosableMenu(
-            Menu([], MenuView()))
-    ), products)
+            Menu([], MenuView())
+        ), products)
 
 menu.open()
+
+response = client.table("Product") \
+            .delete() \
+            .neq("id", "0") \
+            .execute()
+
+
+serializer.serialize_products(products)
 
 

@@ -24,21 +24,36 @@ class Product:
 
     @id.setter
     def id(self, value):
-        if value is None or value == '':
-            raise ValueError('id cannot be empty')
+        if not isinstance(value, int):
+            raise TypeError('id must be an integer')
+        if value <= 0:
+            raise ValueError('id must be a positive integer')
 
         self._id = value
 
     @name.setter
     def name(self, value):
-        if value is None or value == '':
+        if not isinstance(value, str):
+            raise TypeError('name must be a string')
+        if not value:
             raise ValueError('name cannot be empty')
 
         self._name = value
 
     @description.setter
     def description(self, value):
-        if value is None or value == '':
+        if not isinstance(value, str):
+            raise TypeError('description must be a string')
+        if not value:
             raise ValueError('description cannot be empty')
 
         self._description = value
+
+    @warehouse.setter
+    def warehouse(self, value):
+        if not isinstance(value, int):
+            raise TypeError('warehouse must be an integer')
+        if value <= 0:
+            raise ValueError('warehouse must be a positive integer')
+
+        self._warehouse = value

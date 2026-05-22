@@ -9,7 +9,6 @@ class SupabaseDeserializer:
         response = self.client.table("Product").select("*").execute()
         data = response.data
 
-        # Преобразуем вручную
         products = [Product(**item) for item in data]
 
         return products

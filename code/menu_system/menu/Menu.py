@@ -32,5 +32,8 @@ class Menu(IMenu):
     def close(self):
         self.__is_opened = False
 
+    def length(self):
+        return len(self.__items)
+
 
 

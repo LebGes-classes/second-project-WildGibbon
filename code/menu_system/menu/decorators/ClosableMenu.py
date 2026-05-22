@@ -23,3 +23,6 @@ class ClosableMenu(IMenu):
 
     def remove_item(self, index):
         self.__menu.remove_item(index)
+
+    def length(self):
+        return self.__menu.length()
